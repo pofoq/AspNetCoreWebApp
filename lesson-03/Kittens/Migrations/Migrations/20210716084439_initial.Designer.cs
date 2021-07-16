@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Migrations.Migrations
 {
     [DbContext(typeof(ApplicationDataContext))]
-    [Migration("20210713091531_initial")]
+    [Migration("20210716084439_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -17,10 +17,10 @@ namespace Migrations.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
-                .HasAnnotation("ProductVersion", "5.0.7")
+                .HasAnnotation("ProductVersion", "5.0.8")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-            modelBuilder.Entity("DataLayer.Models.KittenModel", b =>
+            modelBuilder.Entity("DataLayer.Abstraction.Entities.Kitten", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
