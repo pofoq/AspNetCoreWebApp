@@ -18,57 +18,42 @@ namespace BusinessLayer.Services
             _repository = repository;
         }
 
-        public async Task<KittenDto> AddKittenAsync(KittenDto kitten)
+        public async Task<KittenDto> AddAsync(KittenDto kitten)
         {
-            return MapKitten(await _repository.AddKittenAsync(MapKitten(kitten)));
+            return Mapper.MapKitten(await _repository.AddAsync(Mapper.MapKitten(kitten)));
         }
 
-        public Task DeleteKittenAsync(int id)
+        public Task DeleteAsync(int id)
         {
-            return _repository.DeleteKittenAsync(id);
+            return _repository.DeleteAsync(id);
         }
 
-        public async Task<KittenDto> GetKittenByIdAsync(int id)
+        public async Task<KittenDto> GetByIdAsync(int id)
         {
-            var kitten = await _repository.GetKittenAsync(id);
-            return MapKitten(kitten);
+            var kitten = await _repository.GetAsync(id);
+            return Mapper.MapKitten(kitten);
         }
 
-        public async Task<IEnumerable<KittenDto>> GetKittensAsync(string search, int page, int size)
+        public async Task<IEnumerable<KittenDto>> GetAsync(string search, int page, int size)
         {
-            var result = await _repository.GetKittenAsync(search, page, size);
-            return result.Select(k => MapKitten(k)).ToArray();
+            var result = await _repository.GetAsync(search, page, size);
+            return result.Select(k => Mapper.MapKitten(k)).ToArray();
         }
 
-        public async Task UpdateKittenAsync(KittenDto kitten)
+        public async Task UpdateAsync(KittenDto kitten)
         {
-            await _repository.UpdateKittenAsync(MapKitten(kitten));
+            await _repository.UpdateAsync(Mapper.MapKitten(kitten));
         }
 
-        private Kitten MapKitten(KittenDto kitten)
+        public async Task AddClinicAsync(int catId, int clinicId)
         {
-            return new Kitten
-            {
-                Color = kitten.Color,
-                Feed = kitten.Feed,
-                HasCirtificate = kitten.HasCirtificate,
-                Id = kitten.Id,
-                NickName = kitten.NickName,
-                Weight = kitten.Weight
-            };
+            await _repository.AddClinicAsync(catId, clinicId);
         }
 
-        private KittenDto MapKitten(Kitten kitten)
+        public async Task<KittenDto> GetKittenClinicAsync(int catId)
         {
-            return new KittenDto
-            {
-                Color = kitten.Color,
-                Feed = kitten.Feed,
-                HasCirtificate = kitten.HasCirtificate,
-                Id = kitten.Id,
-                NickName = kitten.NickName,
-                Weight = kitten.Weight
-            };
+            var kitten = await _repository.GetKittenClinicAsync(catId);
+            return Mapper.MapKitten(kitten);
         }
     }
 }

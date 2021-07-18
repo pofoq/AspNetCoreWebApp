@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 namespace BusinessLayer.Abstraction.Dto
 {
     public class KittenDto
@@ -14,5 +16,7 @@ namespace BusinessLayer.Abstraction.Dto
         public string HasCirtificate { get; set; }
 
         public string Feed { get; set; }
+
+        public virtual List<ClinicDto> Clinics { get; set; } = new List<ClinicDto>();
     }
 }

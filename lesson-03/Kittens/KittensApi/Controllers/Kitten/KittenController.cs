@@ -22,20 +22,20 @@ namespace KittensApi.Controllers.Kitten
         public async Task<GetKittenResponse> GetAsync([FromQuery] GetKittenRequest request)
         {
             var response = new GetKittenResponse();
-            response.Kittens = await _service.GetKittensAsync(request.Serach, request.Page, request.Size);
+            response.Kittens = await _service.GetAsync(request.Search, request.Page, request.Size);
             return response;
         }
 
         [HttpGet("id/{id}")]
         public async Task<KittenDto> GetByIdAsync([FromRoute] int id)
         {
-            return await _service.GetKittenByIdAsync(id);
+            return await _service.GetByIdAsync(id);
         }
 
         [HttpDelete]
         public async Task DeleteAsync([FromQuery] int id)
         {
-            await _service.DeleteKittenAsync(id);
+            await _service.DeleteAsync(id);
         }
 
         [HttpPost]
@@ -49,13 +49,25 @@ namespace KittensApi.Controllers.Kitten
                 NickName = request.NickName,
                 Weight = request.Weight
             };
-            return await _service.AddKittenAsync(serviceRequest);
+            return await _service.AddAsync(serviceRequest);
         }
 
         [HttpPut]
         public async Task UpdateAsync([FromBody] KittenDto kitten)
         {
-            await _service.UpdateKittenAsync(kitten);
+            await _service.UpdateAsync(kitten);
+        }
+
+        [HttpPut("{catId}/clinic/{clinicId}")]
+        public async Task AddClinicAsync([FromRoute] int catId, int clinicId)
+        {
+            await _service.AddClinicAsync(catId, clinicId);
+        }
+
+        [HttpGet("{catId}/clinic")]
+        public async Task<KittenDto> GetClinicAsync([FromRoute] int catId)
+        {
+            return await _service.GetKittenClinicAsync(catId);
         }
     }
 }

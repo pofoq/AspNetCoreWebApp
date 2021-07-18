@@ -1,7 +1,7 @@
 ﻿
-namespace KittensApi.Controllers.Kitten.Requests
+namespace KittensApi.Controllers.Clinic.Requests
 {
-    public class GetKittenRequest
+    public class GetClinicRequest
     {
         public string Search { get; set; }
 

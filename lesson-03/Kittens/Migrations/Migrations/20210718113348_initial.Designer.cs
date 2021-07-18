@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Migrations.Migrations
 {
     [DbContext(typeof(ApplicationDataContext))]
-    [Migration("20210716084439_initial")]
+    [Migration("20210718113348_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -19,6 +19,36 @@ namespace Migrations.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
                 .HasAnnotation("ProductVersion", "5.0.8")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+            modelBuilder.Entity("ClinicKitten", b =>
+                {
+                    b.Property<int>("ClinicsId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("KittensId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("ClinicsId", "KittensId");
+
+                    b.HasIndex("KittensId");
+
+                    b.ToTable("ClinicKitten");
+                });
+
+            modelBuilder.Entity("DataLayer.Abstraction.Entities.Clinic", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Clinics");
+                });
 
             modelBuilder.Entity("DataLayer.Abstraction.Entities.Kitten", b =>
                 {
@@ -45,6 +75,21 @@ namespace Migrations.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Kittens");
+                });
+
+            modelBuilder.Entity("ClinicKitten", b =>
+                {
+                    b.HasOne("DataLayer.Abstraction.Entities.Clinic", null)
+                        .WithMany()
+                        .HasForeignKey("ClinicsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataLayer.Abstraction.Entities.Kitten", null)
+                        .WithMany()
+                        .HasForeignKey("KittensId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 namespace DataLayer.Abstraction.Entities
 {
     public class Kitten
@@ -14,5 +16,7 @@ namespace DataLayer.Abstraction.Entities
         public string HasCirtificate { get; set; }
 
         public string Feed { get; set; }
+
+        public virtual List<Clinic> Clinics { get; set; } = new List<Clinic>();
     }
 }
