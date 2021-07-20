@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KittensApi", "KittensApi\KittensApi.csproj", "{F2435BDB-D091-41A6-8655-554DB6EE822A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KittensApi", "KittensApi\KittensApi.csproj", "{F2435BDB-D091-41A6-8655-554DB6EE822A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{81657A9F-8B53-4F6D-B2F5-A69C8C60FF61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{81657A9F-8B53-4F6D-B2F5-A69C8C60FF61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer.Abstraction", "BusinessLayer.Abstraction\BusinessLayer.Abstraction.csproj", "{6E28AF3F-2604-4077-BFF1-502707219CFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLayer.Abstraction", "BusinessLayer.Abstraction\BusinessLayer.Abstraction.csproj", "{6E28AF3F-2604-4077-BFF1-502707219CFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer.Abstraction", "DataLayer.Abstraction\DataLayer.Abstraction.csproj", "{5BCAFEC3-340F-45A2-B8D4-01F4EBC0F18E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLayer.Abstraction", "DataLayer.Abstraction\DataLayer.Abstraction.csproj", "{5BCAFEC3-340F-45A2-B8D4-01F4EBC0F18E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Migrations", "Migrations\Migrations.csproj", "{B340584C-7A32-4487-98FA-C702B35F9270}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Migrations", "Migrations\Migrations.csproj", "{B340584C-7A32-4487-98FA-C702B35F9270}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{A8DDFFC2-E299-49E0-8A40-7624E3817D57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLayer", "DataLayer\DataLayer.csproj", "{A8DDFFC2-E299-49E0-8A40-7624E3817D57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

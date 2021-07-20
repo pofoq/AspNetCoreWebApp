@@ -4,11 +4,13 @@ using KittensApi.Controllers.Kitten.Responses;
 using KittensApi.Controllers.Kitten.Requests;
 using BusinessLayer.Abstraction.Services;
 using BusinessLayer.Abstraction.Dto;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KittensApi.Controllers.Kitten
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class KittenController : ControllerBase
     {
         private IKittenService _service;
