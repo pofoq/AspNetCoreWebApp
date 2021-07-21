@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using BusinessLayer.Extensions;
 using BusinessLayer.Abstraction.Dto;
 using DataLayer.Abstraction.Entities;
 
@@ -6,12 +7,9 @@ namespace BusinessLayer.Services
 {
     public static class Mapper
     {
-        internal static Kitten MapKitten(KittenDto kitten)
+        internal static Kitten Map(KittenDto kitten)
         {
-            if (kitten is null)
-            {
-                return null;
-            }
+            kitten.EnsureNotNull(nameof(kitten));
             return new Kitten
             {
                 Color = kitten.Color,
@@ -20,16 +18,13 @@ namespace BusinessLayer.Services
                 Id = kitten.Id,
                 NickName = kitten.NickName,
                 Weight = kitten.Weight,
-                Clinics = kitten.Clinics?.Select(c => MapClinic(c)).ToList()
+                Clinics = kitten.Clinics?.Select(c => Map(c)).ToList()
             };
         }
 
-        internal static KittenDto MapKitten(Kitten kitten)
+        internal static KittenDto Map(Kitten kitten)
         {
-            if (kitten is null)
-            {
-                return null;
-            }
+            kitten.EnsureNotNull(nameof(kitten));
             return new KittenDto
             {
                 Color = kitten.Color,
@@ -38,16 +33,13 @@ namespace BusinessLayer.Services
                 Id = kitten.Id,
                 NickName = kitten.NickName,
                 Weight = kitten.Weight,
-                Clinics = kitten.Clinics?.Select(c => MapClinic(c)).ToList()
+                Clinics = kitten.Clinics?.Select(c => Map(c)).ToList()
             };
         }
 
-        internal static Clinic MapClinic(ClinicDto clinic)
+        internal static Clinic Map(ClinicDto clinic)
         {
-            if (clinic is null)
-            {
-                return null;
-            }
+            clinic.EnsureNotNull(nameof(clinic));
             return new Clinic
             {
                 Id = clinic.Id,
@@ -55,16 +47,44 @@ namespace BusinessLayer.Services
             };
         }
 
-        internal static ClinicDto MapClinic(Clinic clinic)
+        internal static ClinicDto Map(Clinic clinic)
         {
-            if (clinic is null)
-            {
-                return null;
-            }
+            clinic.EnsureNotNull(nameof(clinic));
             return new ClinicDto
             {
                 Id = clinic.Id,
                 Name = clinic.Name
+            };
+        }
+
+        internal static UserDto Map(User user)
+        {
+            user.EnsureNotNull(nameof(user));
+
+            return new UserDto()
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+                PasswordHash = user.PasswordHash,
+                RefreshToken = new RefreshToken()
+                {
+                    Token = user.RefreshToken,
+                    Expires = user.Expires
+                }
+            };
+        }
+
+        internal static User Map(UserDto user)
+        {
+            user.EnsureNotNull(nameof(user));
+
+            return new User()
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+                PasswordHash = user.PasswordHash,
+                RefreshToken = user.RefreshToken.Token,
+                Expires = user.RefreshToken.Expires
             };
         }
     }

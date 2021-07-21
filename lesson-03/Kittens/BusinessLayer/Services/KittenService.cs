@@ -20,7 +20,7 @@ namespace BusinessLayer.Services
 
         public async Task<KittenDto> AddAsync(KittenDto kitten)
         {
-            return Mapper.MapKitten(await _repository.AddAsync(Mapper.MapKitten(kitten)));
+            return Mapper.Map(await _repository.AddAsync(Mapper.Map(kitten)));
         }
 
         public Task DeleteAsync(int id)
@@ -31,18 +31,18 @@ namespace BusinessLayer.Services
         public async Task<KittenDto> GetByIdAsync(int id)
         {
             var kitten = await _repository.GetAsync(id);
-            return Mapper.MapKitten(kitten);
+            return Mapper.Map(kitten);
         }
 
         public async Task<IEnumerable<KittenDto>> GetAsync(string search, int page, int size)
         {
             var result = await _repository.GetAsync(search, page, size);
-            return result.Select(k => Mapper.MapKitten(k)).ToArray();
+            return result.Select(k => Mapper.Map(k)).ToArray();
         }
 
         public async Task UpdateAsync(KittenDto kitten)
         {
-            await _repository.UpdateAsync(Mapper.MapKitten(kitten));
+            await _repository.UpdateAsync(Mapper.Map(kitten));
         }
 
         public async Task AddClinicAsync(int catId, int clinicId)
@@ -53,7 +53,7 @@ namespace BusinessLayer.Services
         public async Task<KittenDto> GetKittenClinicAsync(int catId)
         {
             var kitten = await _repository.GetKittenClinicAsync(catId);
-            return Mapper.MapKitten(kitten);
+            return Mapper.Map(kitten);
         }
     }
 }
