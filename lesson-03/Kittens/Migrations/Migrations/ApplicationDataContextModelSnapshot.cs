@@ -15,10 +15,10 @@ namespace Migrations.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
-                .HasAnnotation("ProductVersion", "5.0.7")
+                .HasAnnotation("ProductVersion", "5.0.8")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-            modelBuilder.Entity("DataLayer.Models.KittenModel", b =>
+            modelBuilder.Entity("DataLayer.Abstraction.Entities.Kitten", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
