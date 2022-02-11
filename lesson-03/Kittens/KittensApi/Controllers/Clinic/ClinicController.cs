@@ -4,11 +4,13 @@ using BusinessLayer.Abstraction.Services;
 using BusinessLayer.Abstraction.Dto;
 using System.Collections.Generic;
 using KittensApi.Controllers.Clinic.Requests;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KittensApi.Controllers.Clinic
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ClinicController : ControllerBase
     {
         private IClinicService _service;

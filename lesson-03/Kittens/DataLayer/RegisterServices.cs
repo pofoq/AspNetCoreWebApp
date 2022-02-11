@@ -10,6 +10,7 @@ namespace DataLayer
         {
             services.AddTransient<IKittenRepository, KittenRepository>();
             services.AddTransient<IClinicRepository, ClinicRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
 
             return services;
         }

@@ -19,7 +19,7 @@ namespace BusinessLayer.Services
 
         public async Task<ClinicDto> AddAsync(ClinicDto clinic)
         {
-            return Mapper.MapClinic(await _repository.AddAsync(Mapper.MapClinic(clinic)));
+            return Mapper.Map(await _repository.AddAsync(Mapper.Map(clinic)));
         }
 
         public Task DeleteAsync(int id)
@@ -30,18 +30,18 @@ namespace BusinessLayer.Services
         public async Task<ClinicDto> GetByIdAsync(int id)
         {
             var clinic = await _repository.GetAsync(id);
-            return Mapper.MapClinic(clinic);
+            return Mapper.Map(clinic);
         }
 
         public async Task<IEnumerable<ClinicDto>> GetAsync(string search, int page, int size)
         {
             var result = await _repository.GetAsync(search, page, size);
-            return result?.Select(k => Mapper.MapClinic(k)).ToArray();
+            return result?.Select(k => Mapper.Map(k)).ToArray();
         }
 
         public async Task UpdateAsync(ClinicDto clinic)
         {
-            await _repository.UpdateAsync(Mapper.MapClinic(clinic));
+            await _repository.UpdateAsync(Mapper.Map(clinic));
         }
     }
 }

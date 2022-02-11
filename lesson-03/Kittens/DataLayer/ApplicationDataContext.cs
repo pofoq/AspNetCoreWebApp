@@ -13,5 +13,13 @@ namespace DataLayer
         public DbSet<Kitten> Kittens { get; set; }
 
         public DbSet<Clinic> Clinics { get; set; }
+
+        public DbSet<User> Users { get; set; }
+
+        //protected override void OnModelCreating(ModelBuilder builder)
+        //{
+        //    builder.Entity<Kitten>().Ignore(k => k.Clinics);
+        //    builder.Entity<Clinic>().Ignore(c => c.Kittens);
+        //}
     }
 }

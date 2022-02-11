@@ -10,6 +10,7 @@ namespace BusinessLayer
         {
             services.AddTransient<IKittenService, KittenService>();
             services.AddTransient<IClinicService, ClinicService>();
+            services.AddTransient<IUserService, UserService>();
 
             return services;
         }
