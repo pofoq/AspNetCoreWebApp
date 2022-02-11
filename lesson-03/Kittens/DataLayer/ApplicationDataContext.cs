@@ -11,5 +11,7 @@ namespace DataLayer
         }
 
         public DbSet<Kitten> Kittens { get; set; }
+
+        public DbSet<Clinic> Clinics { get; set; }
     }
 }

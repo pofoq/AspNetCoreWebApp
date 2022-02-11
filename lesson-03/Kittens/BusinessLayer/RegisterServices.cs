@@ -8,7 +8,10 @@ namespace BusinessLayer
     {
         public static IServiceCollection AddBusinessLayer(this IServiceCollection services)
         {
-            return services.AddTransient<IKittenService, KittenService>();
+            services.AddTransient<IKittenService, KittenService>();
+            services.AddTransient<IClinicService, ClinicService>();
+
+            return services;
         }
     }
 }

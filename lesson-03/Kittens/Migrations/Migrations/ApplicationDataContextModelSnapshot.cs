@@ -18,6 +18,36 @@ namespace Migrations.Migrations
                 .HasAnnotation("ProductVersion", "5.0.8")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
+            modelBuilder.Entity("ClinicKitten", b =>
+                {
+                    b.Property<int>("ClinicsId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("KittensId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("ClinicsId", "KittensId");
+
+                    b.HasIndex("KittensId");
+
+                    b.ToTable("ClinicKitten");
+                });
+
+            modelBuilder.Entity("DataLayer.Abstraction.Entities.Clinic", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Clinics");
+                });
+
             modelBuilder.Entity("DataLayer.Abstraction.Entities.Kitten", b =>
                 {
                     b.Property<int>("Id")
@@ -43,6 +73,21 @@ namespace Migrations.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Kittens");
+                });
+
+            modelBuilder.Entity("ClinicKitten", b =>
+                {
+                    b.HasOne("DataLayer.Abstraction.Entities.Clinic", null)
+                        .WithMany()
+                        .HasForeignKey("ClinicsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataLayer.Abstraction.Entities.Kitten", null)
+                        .WithMany()
+                        .HasForeignKey("KittensId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

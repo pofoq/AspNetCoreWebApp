@@ -8,7 +8,10 @@ namespace DataLayer
     {
         public static IServiceCollection AddDataLayer(this IServiceCollection services)
         {
-            return services.AddTransient<IKittenRepository, KittenRepository>();
+            services.AddTransient<IKittenRepository, KittenRepository>();
+            services.AddTransient<IClinicRepository, ClinicRepository>();
+
+            return services;
         }
     }
 }

@@ -1,18 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using DataLayer.Abstraction.Entities;
 using System.Threading.Tasks;
-using DataLayer.Abstraction.Entities;
 
 namespace DataLayer.Abstraction.Repositories
 {
-    public interface IKittenRepository
+    public interface IKittenRepository : IRepositoryBase<Kitten>
     {
-        Task<Kitten> AddKittenAsync(Kitten request);
-
-        Task<IEnumerable<Kitten>> GetKittenAsync(string search, int page, int size);
-
-        Task<Kitten> GetKittenAsync(int id);
-
-        Task DeleteKittenAsync(int id);
-        Task UpdateKittenAsync(Kitten kitten);
+        Task AddClinicAsync(int catId, int clinicId);
+        Task<Kitten> GetKittenClinicAsync(int catId);
     }
 }
